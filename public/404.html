@@ -3,12 +3,17 @@
   <head>
     <meta charset="utf-8">
     <title>Redirecting...</title>
-    <meta http-equiv="refresh" content="0; url=/meena-kannan-developer/">
     <script>
       (function() {
-        var base = '/meena-kannan-developer/';
+        var path = location.pathname;
+        var parts = path.split('/').filter(Boolean);
+        // GitHub Pages repo base is /<user>.github.io/<repo>/... or /<org>.github.io/<repo>/...
+        // Extract repo segment if present
+        var repo = parts.length > 1 ? '/' + parts[0] + '/' + parts[1] + '/' : '/';
+        var base = repo;
         var hashUrl = base + '#' + (location.pathname + location.search + location.hash);
-        location.replace(hashUrl);
+        // Fallback refresh to base if hash redirect was blocked
+        try { location.replace(hashUrl); } catch (e) { location.href = base; }
       })();
     </script>
   </head>
