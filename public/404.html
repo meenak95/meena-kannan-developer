@@ -6,9 +6,12 @@
     <script>
       (function() {
         var parts = location.pathname.split('/').filter(Boolean);
-        // Project pages are served from /<repo>/..., so use first segment as base
         var base = parts.length ? '/' + parts[0] + '/' : '/';
-        var hashUrl = base + '#' + (location.pathname + location.search + location.hash);
+        // Compute path relative to repo base (ensure it starts with '/')
+        var relPath = location.pathname.startsWith(base)
+          ? '/' + location.pathname.slice(base.length)
+          : location.pathname;
+        var hashUrl = base + '#' + relPath + location.search + location.hash;
         try { location.replace(hashUrl); } catch (e) { location.href = base; }
       })();
     </script>
