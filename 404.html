@@ -5,14 +5,10 @@
     <title>Redirecting...</title>
     <script>
       (function() {
-        var path = location.pathname;
-        var parts = path.split('/').filter(Boolean);
-        // GitHub Pages repo base is /<user>.github.io/<repo>/... or /<org>.github.io/<repo>/...
-        // Extract repo segment if present
-        var repo = parts.length > 1 ? '/' + parts[0] + '/' + parts[1] + '/' : '/';
-        var base = repo;
+        var parts = location.pathname.split('/').filter(Boolean);
+        // Project pages are served from /<repo>/..., so use first segment as base
+        var base = parts.length ? '/' + parts[0] + '/' : '/';
         var hashUrl = base + '#' + (location.pathname + location.search + location.hash);
-        // Fallback refresh to base if hash redirect was blocked
         try { location.replace(hashUrl); } catch (e) { location.href = base; }
       })();
     </script>
