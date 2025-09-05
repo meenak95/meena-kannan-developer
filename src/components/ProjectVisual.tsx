@@ -13,6 +13,63 @@ const projectVisuals: Record<string, any> = {
       { icon: Database, label: "PostgreSQL", position: { x: 50, y: 80 }, color: "text-blue-400" },
     ]
   },
+  // Tailored visuals for enterprise projects
+  "Vehicle-Related Licensing System 2.0 (VRLS)": {
+    type: "architecture",
+    elements: [
+      { icon: Globe, label: "Citizen Portal", position: { x: 20, y: 20 }, color: "text-cyan-400" },
+      { icon: Server, label: "API Gateway", position: { x: 50, y: 28 }, color: "text-purple-400" },
+      { icon: Server, label: "Licensing Svc", position: { x: 20, y: 62 }, color: "text-green-400" },
+      { icon: Server, label: "Ownership Svc", position: { x: 80, y: 62 }, color: "text-orange-400" },
+      { icon: Server, label: "Tax Svc", position: { x: 35, y: 70 }, color: "text-emerald-400" },
+      { icon: Server, label: "Permits Svc", position: { x: 65, y: 70 }, color: "text-pink-400" },
+      { icon: Database, label: "PostgreSQL", position: { x: 50, y: 86 }, color: "text-blue-400" },
+    ]
+  },
+  "Vehicle-Related Licensing System (VRLS)": {
+    type: "api-demo",
+    endpoints: [
+      { method: "GET", path: "/api/vehicles/:id", status: 200 },
+      { method: "POST", path: "/api/ownership/transfer", status: 201 },
+      { method: "PUT", path: "/api/tax/:id/pay", status: 200 },
+      { method: "GET", path: "/api/permits", status: 200 },
+    ]
+  },
+  "Promo Power Solution": {
+    type: "dashboard",
+    data: [
+      { label: "Forecast Accuracy", value: 90, color: "bg-green-500" },
+      { label: "Promo Uplift", value: 72, color: "bg-blue-500" },
+      { label: "Compliance", value: 88, color: "bg-purple-500" },
+    ]
+  },
+  "Resale One Stop Portal & Lease Buyback": {
+    type: "architecture",
+    elements: [
+      { icon: Globe, label: "Resale Portal", position: { x: 22, y: 22 }, color: "text-cyan-400" },
+      { icon: Server, label: "Eligibility", position: { x: 50, y: 30 }, color: "text-purple-400" },
+      { icon: Server, label: "Fee Compute", position: { x: 28, y: 60 }, color: "text-emerald-400" },
+      { icon: Server, label: "Approvals", position: { x: 72, y: 60 }, color: "text-pink-400" },
+      { icon: Database, label: "Oracle DB", position: { x: 50, y: 82 }, color: "text-orange-400" },
+    ]
+  },
+  "Legal View Bill Analyzer": {
+    type: "dashboard",
+    data: [
+      { label: "Bills Analyzed", value: 80, color: "bg-cyan-500" },
+      { label: "Flagged Items", value: 22, color: "bg-red-500" },
+      { label: "Savings Identified", value: 65, color: "bg-green-500" },
+    ]
+  },
+  "Intelligent Invoice Conversion": {
+    type: "api-demo",
+    endpoints: [
+      { method: "POST", path: "/api/invoices/upload", status: 201 },
+      { method: "POST", path: "/api/invoices/convert", status: 202 },
+      { method: "GET", path: "/api/invoices/:id/status", status: 200 },
+      { method: "PUT", path: "/api/invoices/:id/validate", status: 200 },
+    ]
+  },
   "Real-time Chat Application": {
     type: "chat-demo",
     messages: [
