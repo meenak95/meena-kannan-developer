@@ -103,6 +103,51 @@ export class ProjectEntity {
         duration: '8 months',
         team_size: 4,
         featured: false
+      },
+      // Personal / Hobby projects
+      {
+        id: 'p1',
+        title: 'Real-time Chat Application',
+        description: 'Scalable chat with WebSocket, presence, and file sharing built with React and Spring.',
+        detailed_description: 'Side project exploring reactive programming and real-time UX. Includes typing indicators, presence, and file uploads.',
+        technologies: ['Spring WebFlux','WebSocket','MongoDB','React','TypeScript'],
+        category: 'web',
+        status: 'completed',
+        year: 2024,
+        featured: true
+      },
+      {
+        id: 'p2',
+        title: 'Financial Analytics Dashboard',
+        description: 'Data visualization dashboard with real-time market data and reporting.',
+        detailed_description: 'Personal project focusing on charting, data aggregation and performance with virtualized lists.',
+        technologies: ['React','Chart.js','Spring Boot','MySQL','Kafka'],
+        category: 'web',
+        status: 'completed',
+        year: 2023,
+        featured: true
+      },
+      {
+        id: 'p3',
+        title: 'Task Management API',
+        description: 'REST API with authentication, RBAC and CRUD for tasks and projects.',
+        detailed_description: 'Learning project emphasizing API design, OpenAPI docs, testing and CI.',
+        technologies: ['Spring Boot','Spring Security','PostgreSQL','JWT','Swagger','JUnit'],
+        category: 'api',
+        status: 'completed',
+        year: 2022,
+        featured: true
+      },
+      {
+        id: 'p4',
+        title: 'Inventory Management System',
+        description: 'Lightweight inventory app with stock tracking and trends.',
+        detailed_description: 'Hobby build focusing on component design and animated visuals.',
+        technologies: ['Spring Boot','Angular','MySQL'],
+        category: 'web',
+        status: 'completed',
+        year: 2022,
+        featured: false
       }
     ];
   }
