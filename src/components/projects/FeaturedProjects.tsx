@@ -8,6 +8,7 @@ import { createPageUrl } from "@/utils";
 import ProjectVisual from "../ProjectVisual";
 import { ProjectEntity } from "@/entities/Project";
 import React from "react";
+import { useMotionValue, useSpring } from "framer-motion";
 
 export default function FeaturedProjects() {
   const [enterprise, setEnterprise] = React.useState<any[]>([]);
@@ -22,116 +23,156 @@ export default function FeaturedProjects() {
     })();
   }, []);
 
-  const Section = ({ title, projects }: { title: string; projects: any[] }) => {
-    const isEnterprise = title.toLowerCase().includes('enterprise');
+  function ProjectRow({ project, index, isEnterprise }: { project: any; index: number; isEnterprise: boolean }) {
+    const rotateXRaw = useMotionValue(0);
+    const rotateYRaw = useMotionValue(0);
+    const rotateX = useSpring(rotateXRaw, { stiffness: 180, damping: 18 });
+    const rotateY = useSpring(rotateYRaw, { stiffness: 180, damping: 18 });
+    const [hover, setHover] = React.useState(false);
+
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+      const rect = (e.currentTarget as HTMLDivElement).getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+      const dx = e.clientX - cx;
+      const dy = e.clientY - cy;
+      const tiltX = (dy / (rect.height / 2)) * -8; // invert for natural tilt
+      const tiltY = (dx / (rect.width / 2)) * 8;
+      rotateXRaw.set(tiltX);
+      rotateYRaw.set(tiltY);
+    };
+
+    const resetTilt = () => {
+      rotateXRaw.set(0);
+      rotateYRaw.set(0);
+    };
+
     return (
-      <>
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: index * 0.1 }}
+        viewport={{ once: true }}
+        className={`grid lg:grid-cols-2 gap-8 items-center ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`}
+      >
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-10 mt-4"
+          className={`relative ${index % 2 === 1 ? 'lg:col-start-2' : ''}`}
+          onMouseEnter={() => setHover(true)}
+          onMouseLeave={() => { setHover(false); resetTilt(); }}
+          onMouseMove={isEnterprise ? handleMouseMove : undefined}
+          whileHover={isEnterprise ? { y: -10, scale: 1.02 } : { y: -5, scale: 1.01 }}
+          transition={{ type: 'spring', stiffness: 260, damping: 18 }}
+          style={isEnterprise ? { rotateX, rotateY, transformPerspective: 900 } : {}}
         >
-          <h3 className="text-3xl lg:text-4xl font-bold">
-            <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
-              {title}
-            </span>
-          </h3>
+          {/* Animated gradient border (conic) */}
+          {isEnterprise && (
+            <div className="pointer-events-none absolute -inset-[2px] rounded-3xl opacity-60">
+              <div className="absolute -inset-[2px] rounded-3xl bg-[conic-gradient(var(--tw-gradient-stops))] from-purple-600 via-cyan-500 to-purple-600 animate-[spin_8s_linear_infinite] blur-[2px]" />
+            </div>
+          )}
+
+          {/* Visual Card */}
+          <div className="relative overflow-hidden rounded-2xl border border-slate-700/60 hover:border-purple-500/40 transition-all duration-500 group bg-slate-900/50 shadow-lg">
+            {/* Ambient particles for enterprise */}
+            {isEnterprise && (
+              <div className="pointer-events-none absolute inset-0 overflow-hidden">
+                <div className="absolute -top-8 -left-10 w-40 h-40 bg-cyan-400/15 rounded-full blur-3xl" />
+                <div className="absolute -bottom-10 -right-12 w-48 h-48 bg-purple-500/15 rounded-full blur-3xl" />
+              </div>
+            )}
+
+            <ProjectVisual projectTitle={project.title} className="h-64 lg:h-80 w-full" />
+
+            {/* Shine sweep on hover */}
+            {isEnterprise && (
+              <motion.div
+                className="pointer-events-none absolute -inset-20 bg-gradient-to-r from-transparent via-white/12 to-transparent rotate-12"
+                initial={{ x: '-150%' }}
+                animate={hover ? { x: ['-150%', '150%'] } : { x: '-150%' }}
+                transition={{ duration: 1.1, ease: 'easeOut' }}
+              />
+            )}
+
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-4">
+                <Button size="sm" className="bg-purple-600 hover:bg-purple-700 text-white">
+                  <ExternalLink className="w-4 h-4 mr-2" />
+                  Live Demo
+                </Button>
+                <Button size="sm" variant="outline" className="border-white/20 text-white hover:bg-white/10">
+                  <Github className="w-4 h-4 mr-2" />
+                  Source
+                </Button>
+              </div>
+            </div>
+          </div>
         </motion.div>
 
-        <div className="grid gap-8 lg:gap-12">
-          {projects.map((project, index) => (
-            <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className={`grid lg:grid-cols-2 gap-8 items-center ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`}
-            >
-              <motion.div
-                className={`relative ${index % 2 === 1 ? 'lg:col-start-2' : ''}`}
-                whileHover={isEnterprise ? { y: -10, scale: 1.03 } : { y: -5, scale: 1.01 }}
-                transition={{ type: 'spring', stiffness: 260, damping: 18 }}
-              >
-                {/* Glow ring for enterprise */}
-                {isEnterprise && (
-                  <div className="pointer-events-none absolute -inset-1 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-purple-600 via-cyan-600 to-purple-600 blur-xl opacity-40" />
-                  </div>
-                )}
-
-                {/* Visual Card */}
-                <div className="relative overflow-hidden rounded-2xl border border-slate-700/50 hover:border-purple-500/30 transition-all duration-500 group bg-slate-900/40">
-                  {/* Subtle particles for enterprise */}
-                  {isEnterprise && (
-                    <div className="pointer-events-none absolute inset-0 overflow-hidden">
-                      <div className="absolute -top-6 -left-6 w-28 h-28 bg-cyan-500/10 rounded-full blur-2xl animate-pulse" />
-                      <div className="absolute -bottom-8 -right-8 w-36 h-36 bg-purple-500/10 rounded-full blur-2xl animate-pulse" />
-                    </div>
-                  )}
-
-                  <ProjectVisual projectTitle={project.title} className="h-64 lg:h-80 w-full" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-4">
-                      <Button size="sm" className="bg-purple-600 hover:bg-purple-700 text-white">
-                        <ExternalLink className="w-4 h-4 mr-2" />
-                        Live Demo
-                      </Button>
-                      <Button size="sm" variant="outline" className="border-white/20 text-white hover:bg-white/10">
-                        <Github className="w-4 h-4 mr-2" />
-                        Source
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-
-              <motion.div
-                className={`space-y-6 ${index % 2 === 1 ? 'lg:col-start-1' : ''}`}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                viewport={{ once: true }}
-              >
-                <div className="space-y-4">
-                  <div className="flex items-center space-x-3">
-                    <Badge variant="outline" className="bg-purple-500/20 border-purple-500/30 text-purple-300">
-                      {project.category?.charAt(0).toUpperCase() + project.category?.slice(1) || 'Project'}
-                    </Badge>
-                    {isEnterprise && <div className="w-2 h-2 bg-cyan-400 rounded-full animate-ping" />}
-                    {!isEnterprise && <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />}
-                  </div>
-                  <h3 className="text-2xl lg:text-3xl font-bold text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-cyan-400 group-hover:bg-clip-text transition-all duration-300">
-                    {project.title}
-                  </h3>
-                </div>
-                <p className="text-gray-300 text-lg leading-relaxed">{project.description}</p>
-                <div className="flex flex-wrap gap-2">
-                  {project.technologies?.slice(0, 8).map((tech: string) => (
-                    <Badge key={tech} variant="secondary" className="bg-slate-800/50 text-gray-300 hover:bg-slate-700/50 transition-colors duration-200">
-                      {tech}
-                    </Badge>
-                  ))}
-                </div>
-                <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                  <Button className="bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 text-white group">
-                    <ExternalLink className="w-4 h-4 mr-2 group-hover:rotate-12 transition-transform duration-200" />
-                    View Project
-                  </Button>
-                  <Button variant="outline" className="border-slate-600 text-gray-300 hover:bg-slate-800">
-                    <Github className="w-4 h-4 mr-2" />
-                    Source Code
-                  </Button>
-                </div>
-              </motion.div>
-            </motion.div>
-          ))}
-        </div>
-      </>
+        <motion.div
+          className={`space-y-6 ${index % 2 === 1 ? 'lg:col-start-1' : ''}`}
+          initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
+          <div className="space-y-4">
+            <div className="flex items-center space-x-3">
+              <Badge variant="outline" className="bg-purple-500/20 border-purple-500/30 text-purple-300">
+                {project.category?.charAt(0).toUpperCase() + project.category?.slice(1) || 'Project'}
+              </Badge>
+              {isEnterprise && <div className="w-2 h-2 bg-cyan-400 rounded-full animate-ping" />}
+              {!isEnterprise && <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />}
+            </div>
+            <h3 className="text-2xl lg:text-3xl font-bold text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-cyan-400 group-hover:bg-clip-text transition-all duration-300">
+              {project.title}
+            </h3>
+          </div>
+          <p className="text-gray-300 text-lg leading-relaxed">{project.description}</p>
+          <div className="flex flex-wrap gap-2">
+            {project.technologies?.slice(0, 8).map((tech: string) => (
+              <Badge key={tech} variant="secondary" className="bg-slate-800/50 text-gray-300 hover:bg-slate-700/50 transition-colors duration-200">
+                {tech}
+              </Badge>
+            ))}
+          </div>
+          <div className="flex flex-col sm:flex-row gap-4 pt-4">
+            <Button className="bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 text-white group">
+              <ExternalLink className="w-4 h-4 mr-2 group-hover:rotate-12 transition-transform duration-200" />
+              View Project
+            </Button>
+            <Button variant="outline" className="border-slate-600 text-gray-300 hover:bg-slate-800">
+              <Github className="w-4 h-4 mr-2" />
+              Source Code
+            </Button>
+          </div>
+        </motion.div>
+      </motion.div>
     );
-  };
+  }
+
+  const Section = ({ title, projects }: { title: string; projects: any[] }) => (
+    <>
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        className="text-center mb-10 mt-4"
+      >
+        <h3 className="text-3xl lg:text-4xl font-bold">
+          <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
+            {title}
+          </span>
+        </h3>
+      </motion.div>
+
+      <div className="grid gap-8 lg:gap-12">
+        {projects.map((project, index) => (
+          <ProjectRow key={project.title} project={project} index={index} isEnterprise={title.toLowerCase().includes('enterprise')} />
+        ))}
+      </div>
+    </>
+  );
 
   return (
     <section className="py-20 relative overflow-hidden">
