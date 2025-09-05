@@ -4,47 +4,47 @@ import { Badge } from "@/components/ui/badge";
 
 const skillCategories = [
   {
-    name: "Backend Development",
+    name: "Backend & Distributed Systems",
     icon: "🔧",
     skills: [
-      { name: "Java", level: 95, color: "bg-orange-500" },
-      { name: "Spring Boot", level: 90, color: "bg-green-500" },
-      { name: "Spring Security", level: 85, color: "bg-green-600" },
-      { name: "JPA/Hibernate", level: 88, color: "bg-orange-600" },
-      { name: "Maven/Gradle", level: 80, color: "bg-blue-500" },
+      { name: "Java 21 / Core Java / J2EE", level: 95, color: "bg-orange-500" },
+      { name: "Spring Boot / Spring Security", level: 92, color: "bg-green-600" },
+      { name: "Microservices / DDD", level: 90, color: "bg-emerald-600" },
+      { name: "Kafka / Kafka Streams / JMS", level: 88, color: "bg-purple-600" },
+      { name: "REST / GraphQL", level: 85, color: "bg-cyan-600" },
     ]
   },
   {
-    name: "Frontend Development",
+    name: "Frontend Engineering",
     icon: "🎨",
     skills: [
-      { name: "React", level: 88, color: "bg-cyan-500" },
-      { name: "TypeScript", level: 85, color: "bg-blue-600" },
-      { name: "JavaScript", level: 90, color: "bg-yellow-500" },
-      { name: "HTML/CSS", level: 92, color: "bg-orange-400" },
-      { name: "Tailwind CSS", level: 85, color: "bg-teal-500" },
-    ]
-  },
-  {
-    name: "Database & Storage",
-    icon: "🗄️",
-    skills: [
-      { name: "PostgreSQL", level: 90, color: "bg-blue-700" },
-      { name: "MySQL", level: 85, color: "bg-orange-700" },
-      { name: "MongoDB", level: 80, color: "bg-green-700" },
-      { name: "Redis", level: 75, color: "bg-red-600" },
-      { name: "H2", level: 85, color: "bg-indigo-500" },
+      { name: "Angular (RxJS, NgRx)", level: 88, color: "bg-red-500" },
+      { name: "React / Next.js", level: 85, color: "bg-cyan-500" },
+      { name: "TypeScript / JavaScript", level: 90, color: "bg-blue-600" },
+      { name: "JSP / JSF (PrimeFaces) / jQuery", level: 80, color: "bg-yellow-600" },
+      { name: "RESTful APIs / AJAX", level: 85, color: "bg-teal-500" },
     ]
   },
   {
     name: "Cloud & DevOps",
     icon: "☁️",
     skills: [
-      { name: "AWS", level: 85, color: "bg-orange-500" },
-      { name: "Docker", level: 88, color: "bg-blue-600" },
-      { name: "Kubernetes", level: 75, color: "bg-blue-700" },
-      { name: "Jenkins", level: 80, color: "bg-gray-600" },
-      { name: "GitLab CI/CD", level: 82, color: "bg-orange-600" },
+      { name: "AWS / Azure / GCP", level: 85, color: "bg-orange-500" },
+      { name: "Docker / Kubernetes / Helm", level: 88, color: "bg-blue-600" },
+      { name: "Terraform / Pulumi / Ansible", level: 80, color: "bg-slate-500" },
+      { name: "CI/CD (Jenkins, GitHub Actions)", level: 88, color: "bg-gray-600" },
+      { name: "DevSecOps (SonarQube, Fortify)", level: 82, color: "bg-pink-600" },
+    ]
+  },
+  {
+    name: "Data & Observability",
+    icon: "📈",
+    skills: [
+      { name: "Databases (Oracle, PostgreSQL, MSSQL, DB2)", level: 88, color: "bg-indigo-600" },
+      { name: "NoSQL (MongoDB, Cassandra, Redis)", level: 82, color: "bg-green-700" },
+      { name: "Streaming (Kafka, Spark)", level: 80, color: "bg-purple-700" },
+      { name: "APM & Monitoring (Grafana, Prometheus, Dynatrace)", level: 85, color: "bg-green-600" },
+      { name: "ELK / OpenTelemetry / Jaeger", level: 80, color: "bg-amber-600" },
     ]
   },
 ];

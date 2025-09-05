@@ -82,15 +82,15 @@ export default function About() {
                 <div className="space-y-3">
                   <div className="flex items-center space-x-3 text-gray-300">
                     <MapPin className="w-5 h-5 text-purple-400" />
-                    <span>San Francisco, CA</span>
+                    <span>Singapore</span>
                   </div>
                   <div className="flex items-center space-x-3 text-gray-300">
                     <Award className="w-5 h-5 text-cyan-400" />
-                    <span>5+ Years Experience</span>
+                    <span>9+ Years Experience</span>
                   </div>
                   <div className="flex items-center space-x-3 text-gray-300">
                     <Building className="w-5 h-5 text-purple-400" />
-                    <span>Enterprise & Startups</span>
+                    <span>Enterprise & Government Systems</span>
                   </div>
                 </div>
               </CardContent>
@@ -126,9 +126,11 @@ export default function About() {
               </div>
 
               <div className="mt-8 flex flex-col sm:flex-row gap-4">
-                <Button className="bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 text-white">
-                  <Download className="w-4 h-4 mr-2" />
-                  Download Resume
+                <Button asChild className="bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 text-white">
+                  <a href="/resume.txt" download>
+                    <Download className="w-4 h-4 mr-2" />
+                    Download Resume
+                  </a>
                 </Button>
                 <Button variant="outline" className="border-slate-600 text-gray-300 hover:bg-slate-800">
                   View Certifications

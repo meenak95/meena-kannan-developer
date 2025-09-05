@@ -1,0 +1,52 @@
+Meena Kannan
+Lead/Senior Software Engineer, Singapore
+Phone: +65 87373057
+Email: meenakannan92@gmail.com
+LinkedIn: https://www.linkedin.com/in/meena-kannan-mk/
+
+Profile
+Lead Software Engineer with 9 years of experience in full-stack development, cloud migration, and Agile delivery. Skilled in Angular, Spring Boot, and AWS to build scalable, high-performance applications. Known for leading teams, improving system efficiency, and delivering business-critical features. Committed to clean code, best practices, and continuous improvement.
+
+Certifications
+- Professional Scrum Product Owner I
+- Professional Scrum Master I
+- ICT Assessment Certification for Software Developer (NUS-ISS Singapore)
+
+Core Skills
+- Programming: Java 21, Core Java, J2EE, Spring Boot, Groovy, JavaScript, TypeScript, Python
+- Frontend: Angular (RxJS, NgRx), React, Next.js, JSP, JSF (PrimeFaces), AJAX, GraphQL
+- Distributed: DDD, Microservices, API Gateway (Istio, Envoy), Kafka, Kafka Streams, JMS, Service Mesh
+- Cloud: AWS (EC2, S3, RDS, IAM), Azure, GCP, Docker, Kubernetes, Helm, Terraform, Pulumi, Serverless (AWS Lambda), Ansible
+- DevOps: Git, Jenkins, GitHub Actions, Maven, Gradle, Nexus/Artifactory, SonarQube, HP Fortify
+- Data: Oracle, PostgreSQL, SQL Server, DB2, Vertica, MongoDB, Cassandra, Redis, Apache Spark
+- QE & Test: JUnit, Mockito, Selenium, Cypress, Cucumber, REST Assured, JMeter, Gatling, Postman
+- Observability: ELK, Prometheus, Grafana, OpenTelemetry, Jaeger, New Relic, Dynatrace, APM tools
+- Agile & Leadership: Scrum, Kanban, Jira, Confluence, DevSecOps, Mentorship, Sprint Planning, Code Review
+
+Employment
+NCS, Singapore (Dec 2021 — Present)
+- Lead Software Engineer — VRLS 2.0 (AWS Gov Cloud, Microservices)
+  Tools: Spring Boot, Angular 13, AWS (ECS, S3, IAM), Redis, Kafka, Kafka Streams, PostgreSQL, Docker, Kubernetes, Jenkins, GitHub Actions, Prometheus, Grafana, Dynatrace, JUnit, Mockito, ELK
+
+NCS, Singapore (Dec 2021 — Dec 2023)
+- Application Consultant — VRLS (Mission-critical system for LTA)
+  Tools: Java, JSP, Spring MVC, Oracle, Kafka, JMS, Redis, REST APIs, WebLogic, JUnit, Fortify, Jira
+
+BlackStraw.AI, India (May 2021 — Nov 2021)
+- Senior Software Engineer — Promo Power Solution
+  Tools: Java, Spring Boot, Groovy, Kafka, AWS Lambda, PostgreSQL, REST APIs, Git, Jenkins, JUnit, SonarQube
+
+HDB (via AllTech Systems), Singapore (Aug 2019 — Dec 2020)
+- Software Engineer — Resale One Stop Portal & Lease Buyback Systems
+  Tools: Java, JSF (PrimeFaces), JSP, Oracle, WebLogic, JUnit, SVN, SOAP
+
+Wolters Kluwer, India (Jul 2018 — Jul 2019)
+- Software Engineer — Legal View Bill Analyzer; Intelligent Invoice Conversion
+  Tools: Spring Boot, MongoDB, REST, JUnit, Jenkins, Git, SonarQube, Groovy, Drools, Oracle
+
+SysArc Infomatix, India (May 2016 — Jul 2018)
+- Associate Software Engineer — Lending Automation Processing Systems (LAPS)
+  Tools: Java, Struts, JSP, Oracle, WebLogic, JDBC, SVN, JUnit
+
+Education
+B.E, Anna University, Chennai, India (2016)

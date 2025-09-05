@@ -38,21 +38,21 @@ export default function Contact() {
     {
       icon: Mail,
       title: "Email",
-      value: "developer@portfolio.com",
-      href: "mailto:developer@portfolio.com",
+      value: "meenakannan92@gmail.com",
+      href: "mailto:meenakannan92@gmail.com",
       color: "text-purple-400"
     },
     {
       icon: Phone,
       title: "Phone",
-      value: "+1 (555) 123-4567",
-      href: "tel:+15551234567",
+      value: "+65 87373057",
+      href: "tel:+6587373057",
       color: "text-cyan-400"
     },
     {
       icon: MapPin,
       title: "Location",
-      value: "San Francisco, CA",
+      value: "Singapore",
       href: "#",
       color: "text-green-400"
     },
@@ -66,8 +66,8 @@ export default function Contact() {
   ];
 
   const socialLinks = [
-    { name: "GitHub", icon: Github, url: "https://github.com", color: "hover:text-purple-400" },
-    { name: "LinkedIn", icon: Linkedin, url: "https://linkedin.com", color: "hover:text-blue-400" },
+    { name: "GitHub", icon: Github, url: "https://github.com/meenak95", color: "hover:text-purple-400" },
+    { name: "LinkedIn", icon: Linkedin, url: "https://www.linkedin.com/in/meena-kannan-mk/", color: "hover:text-blue-400" },
     { name: "Twitter", icon: Twitter, url: "https://twitter.com", color: "hover:text-cyan-400" },
   ];
 

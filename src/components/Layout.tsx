@@ -17,8 +17,8 @@ const navigationItems = [
 ];
 
 const socialLinks = [
-  { name: "GitHub", icon: Github, url: "https://github.com" },
-  { name: "LinkedIn", icon: Linkedin, url: "https://linkedin.com" },
+  { name: "GitHub", icon: Github, url: "https://github.com/meenak95" },
+  { name: "LinkedIn", icon: Linkedin, url: "https://www.linkedin.com/in/meena-kannan-mk/" },
   { name: "Twitter", icon: Twitter, url: "https://twitter.com" },
 ];
 
